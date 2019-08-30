@@ -3,8 +3,8 @@ import { HashRouter as Router, Route, Link } from 'react-router-dom';
 import './App.css';
 import NavBar from '../NavBar/NavBar';
 import Home from  '../Home/Home';
-import Details from '../Details/Details';
-import Edit from '../Edit/Edit';
+// import Details from '../Details/Details';
+// import Edit from '../Edit/Edit';
 
 
 class App extends Component {
@@ -20,6 +20,7 @@ class App extends Component {
           <div>
             <Home />
             {/* <Route exact path='/' component={Home} /> */}
+            {/* <Route exact path='/details' component={Details} /> */}
           </div>
         </div>
       </Router>

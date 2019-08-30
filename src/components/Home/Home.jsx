@@ -1,8 +1,22 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 
 
 class Home extends Component {
+
+    //on load render all movies in data base onto home view
+    //dispatch to saga to get movies
+
+    componentDidMount () {
+        console.log('Home Loaded');
+        this.props.dispatch({
+            type: 'GET_MOVIES'
+        })
+    }
+
+
+    //
 
 
 
@@ -10,9 +24,16 @@ class Home extends Component {
 
         return (
             <div>
-                <h1>hellow</h1>
-                <p>List of Movies Here</p>
+                <div>
+                    <h2>List of Movies Here</h2>
+                </div>
+
+                <div>
+
+                </div>
+                
             </div>
+
         )
     }
 }
@@ -21,4 +42,4 @@ class Home extends Component {
 
 
 
-export default Home;
+export default connect() (Home);
