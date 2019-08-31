@@ -20,16 +20,21 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
     let id = req.params.id
     console.log('details id:', id);
-    let queryText = `SELECT * FROM "movies" WHERE "id" = $1;`;
+    // let queryText = `SELECT * FROM "movies" WHERE "id" = $1;`;
+    let queryText = `SELECT * FROM "movies" WHERE "id" = $1;`
 
     pool.query(queryText, [id])
     .then((results) => {
+        console.log(results.rows);
+        
         res.send(results.rows)
     }).catch((err) => {
         console.log('in GETDETAILS error:', err);
         res.sendStatus(500);
     })
 })
+
+
 
 
 module.exports = router;

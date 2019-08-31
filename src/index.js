@@ -17,6 +17,7 @@ import createSagaMiddleware from 'redux-saga';
 function* rootSaga() {
     yield takeEvery ('GET_MOVIES', getMovies)
     yield takeEvery ('GET_MOVIE_DETAILS', getDetails)
+    yield takeEvery ('GET_MOVIE_GENRES', getGenres)
 }
 
 //SAGA TO GET MOVIE DETAILS USING PAYLOAD OF 'ID'
@@ -34,6 +35,21 @@ function* getDetails (action) {
     }
 }
 
+//GET THE GENRE FOR MOVIE POSTER CLICKED
+function* getGenres (action) {
+    try {
+        let response = yield axios.get(`/genres/${action.payload}`)
+        console.log('in getGenres:', response);
+        yield put ({
+            type: 'SET_GENRES',
+            payload: response.data
+        })
+    } catch (error) {
+        console.log('in getGenres error:', error);
+    }
+}
+
+
 
 //SAGA TO GET MOVIES FROM DB
 function* getMovies (action) {
@@ -45,10 +61,8 @@ function* getMovies (action) {
             type: 'SET_MOVIES',
             payload: response.data
         })
-
     } catch (error) {
-        console.log('in getMovies saga error:', error);
-        
+        console.log('in getMovies saga error:', error);   
     }
 }
 
@@ -71,6 +85,7 @@ const movies = (state = [], action) => {
     }
 }
 
+
 //REDUCER TO STORE DETAILS OF MOVIE POSTER CLICKED
 const movieToGet= (state = [], action) => {
     switch(action.type) {
@@ -81,6 +96,7 @@ const movieToGet= (state = [], action) => {
             return state;
     }
 }
+
 
 
 //GENRES REDUCER

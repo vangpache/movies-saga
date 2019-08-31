@@ -14,6 +14,10 @@ class MovieItem extends Component {
         console.log('movie poster clicked', id);
         //DISPATCH TO SAGA AND GET MOVIE DETAILS OF ID
         this.props.dispatch({
+            type: 'GET_MOVIE_GENRES',
+            payload: id
+        })
+        this.props.dispatch({
             type: 'GET_MOVIE_DETAILS',
             payload: id
         })
@@ -28,8 +32,8 @@ class MovieItem extends Component {
         
             <>
                 <TableCell>{this.props.title}</TableCell>
-                <TableCell onClick={() => this.handleClick (this.props.id)}>
-                    <img src={this.props.poster} alt={this.props.alt} />
+                <TableCell >
+                    <img src={this.props.poster} alt={this.props.alt} onClick={() => this.handleClick(this.props.id)}/>
                 </TableCell>
             </>
             
