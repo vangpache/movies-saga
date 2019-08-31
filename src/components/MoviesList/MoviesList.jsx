@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import MovieItem from '../MovieItem/MovieItem';
 import { TableCell, TableRow } from '@material-ui/core';
 
 
@@ -18,8 +19,7 @@ class MoviesList extends Component {
                 {this.props.reduxStore.movies.map(movie => {
                     return (
                         <TableRow key={movie.id}>
-                            <TableCell>{movie.title}</TableCell>
-                            <TableCell><img src={movie.poster} alt={movie.title} /></TableCell>
+                            <MovieItem key={movie.id} title={movie.title} alt={movie.title} poster={movie.poster} />
                         </TableRow>
                     )
                 })}
