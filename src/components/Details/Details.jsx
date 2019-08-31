@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import './Details.css';
+
+
 
 
 class Details extends Component  {
@@ -12,7 +15,17 @@ class Details extends Component  {
         return (
 
             <div>
+                {this.props.reduxStore.movieToGet.map(info => {
+                    return (
+                        <div className="detailsDiv">
+                            <h1>{info.title}</h1> <br/>
+                            <img src={info.poster} alt={info.title}/><br/>
+                            <p>{info.description}</p>
+                        </div>
+                    )
+                })}
 
+                {JSON.stringify(this.props.reduxStore.movieToGet)}
             </div>
         )
     }
@@ -20,7 +33,11 @@ class Details extends Component  {
 
 
 
+const mapStateToProps = (reduxStore) => {
+    return {
+        reduxStore
+    }
+}
 
 
-
-export default connect () (Details);
+export default connect (mapStateToProps) (Details);

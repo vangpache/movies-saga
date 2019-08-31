@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { TableCell } from '@material-ui/core';
+
 
 
 
@@ -16,13 +18,12 @@ class MovieItem extends Component {
             payload: id
         })
         //PUSH HISTORY TO DETAILS LINK(DISPLAYS DETAILS ABOUT MOVIE OF POSTER CLICKED)
-        // this.props.history.push('/details')
+        this.props.history.push('/details');
     }
 
     render () {
 
-
-
+       
         return (
         
             <>
@@ -31,12 +32,16 @@ class MovieItem extends Component {
                     <img src={this.props.poster} alt={this.props.alt} />
                 </TableCell>
             </>
+            
         )
+
+            
     }
+    
 }
 
 
 
 
 
-export default connect() (MovieItem);
+export default withRouter(connect() (MovieItem));

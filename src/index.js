@@ -72,7 +72,7 @@ const movies = (state = [], action) => {
 }
 
 //REDUCER TO STORE DETAILS OF MOVIE POSTER CLICKED
-const movieToPost = (state = [], action) => {
+const movieToGet= (state = [], action) => {
     switch(action.type) {
         case 'MOVIE_TO_POST' :
             console.log('IN MOVIE TO POST:', action.payload);
@@ -98,7 +98,7 @@ const genres = (state = [], action) => {
 // Create one store that all components can use
 const storeInstance = createStore(
     combineReducers({
-        movieToPost,
+        movieToGet,
         movies,
         genres,
     }),

@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { HashRouter as Router } from 'react-router-dom';
+import { HashRouter as Router, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
 import './App.css';
 import NavBar from '../NavBar/NavBar';
 import Home from  '../Home/Home';
-// import Details from '../Details/Details';
+import Details from '../Details/Details';
 // import Edit from '../Edit/Edit';
 
 
@@ -16,17 +17,16 @@ class App extends Component {
           <header>
             <NavBar />
           </header>
-      
-          <div>
-            <Home />
-            {/* <Route exact path='/' component={Home} /> */}
-            {/* <Route exact path='/details' component={Details} /> */}
-          </div>
+          <br/>
+            {/* <Home /> */}
+          <Route exact path='/' component={Home} />
+          <Route path='/details' exact component={Details} />
         </div>
+        
       </Router>
       
     );
   }
 }
 
-export default App;
+export default connect () (App);
