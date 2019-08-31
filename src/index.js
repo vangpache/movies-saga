@@ -18,17 +18,18 @@ function* rootSaga() {
     yield takeEvery ('GET_MOVIES', getMovies)
     yield takeEvery ('GET_MOVIE_DETAILS', getDetails)
     yield takeEvery ('GET_MOVIE_GENRES', getGenres)
+    yield takeEvery ('UPDATE_MOVIE', updateMovie)
 }
 
 //SAGA TO GET MOVIE DETAILS USING PAYLOAD OF 'ID'
 function* getDetails (action) {
     try {
         let response = yield axios.get(`/movies/${action.payload}`)
-        console.log('in getDetails saga:', response);
+        console.log('in getDetails saga:', response.data[0]);
         //DISPATCH TO A DETAILS REDUCER
         yield put ({
             type: 'MOVIE_TO_POST',
-            payload: response.data
+            payload: response.data[0]
         })
     } catch (error) {
         console.log('in getDetails error:', error);
@@ -66,8 +67,17 @@ function* getMovies (action) {
     }
 }
 
-
-
+function* updateMovie (action) {
+    try {
+        yield axios.put('/movies', action.payload)
+        //GET MOVIE LIST WITH UPDATED INFORMATION
+        yield put ({
+            type: 'SET_MOVIES'
+        })
+    } catch (error) {
+        console.log('in UPDATE saga error:', error);
+    }
+}
 
 
 // Create sagaMiddleware
