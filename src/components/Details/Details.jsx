@@ -12,6 +12,16 @@ class Details extends Component  {
 
     ////NEED TO ADD GENRE IN GET: SQL JOINS (SERVER SIDE)
 
+
+    handleBack = () => {
+        this.props.history.push('/')
+    }
+
+    handleEdit = () => {
+        this.props.history.push('/edit')
+    }
+
+
     render () {
 
 
@@ -24,11 +34,12 @@ class Details extends Component  {
                             <h1>{info.title}</h1> <br/>
                             <img src={info.poster} alt={info.title}/><br/>
                             <p>{info.description}</p><br/>
-                            <Button variant="outlined" color="primary">Back to List</Button>
-                            <Button variant="outlined" color="secondary">Edit Details</Button>
                         </div>
                     )
                 })}
+
+                <Button variant="outlined" color="primary" onClick={this.handleBack}>Back to List</Button>
+                <Button variant="outlined" color="secondary" onClick={this.handleEdit}>Edit Details</Button>
 
                 {/* {JSON.stringify(this.props.reduxStore.movieToGet)} */}
             </div>

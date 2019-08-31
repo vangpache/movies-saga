@@ -5,7 +5,7 @@ import './App.css';
 import NavBar from '../NavBar/NavBar';
 import Home from  '../Home/Home';
 import Details from '../Details/Details';
-// import Edit from '../Edit/Edit';
+import Edit from '../Edit/Edit';
 
 
 class App extends Component {
@@ -21,6 +21,7 @@ class App extends Component {
             {/* <Home /> */}
           <Route exact path='/' component={Home} />
           <Route path='/details' exact component={Details} />
+          <Route path='/edit' exact component={Edit} />
         </div>
         
       </Router>
