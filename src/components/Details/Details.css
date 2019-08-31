@@ -3,5 +3,7 @@ div {
 }
 
 .detailsDiv {
+    margin: auto;
     width: 90%;
 }
+
