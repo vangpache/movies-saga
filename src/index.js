@@ -16,6 +16,22 @@ import createSagaMiddleware from 'redux-saga';
 // Create the rootSaga generator function
 function* rootSaga() {
     yield takeEvery ('GET_MOVIES', getMovies)
+    yield takeEvery ('GET_MOVIE_DETAILS', getDetails)
+}
+
+//SAGA TO GET MOVIE DETAILS USING PAYLOAD OF 'ID'
+function* getDetails (action) {
+    try {
+        let response = yield axios.get(`/movies/${action.payload}`)
+        console.log('in getDetails saga:', response);
+        //DISPATCH TO A DETAILS REDUCER
+        yield put ({
+            type: 'MOVIE_TO_POST',
+            payload: response.data
+        })
+    } catch (error) {
+        console.log('in getDetails error:', error);
+    }
 }
 
 
@@ -55,6 +71,18 @@ const movies = (state = [], action) => {
     }
 }
 
+//REDUCER TO STORE DETAILS OF MOVIE POSTER CLICKED
+const movieToPost = (state = [], action) => {
+    switch(action.type) {
+        case 'MOVIE_TO_POST' :
+            console.log('IN MOVIE TO POST:', action.payload);
+            return action.payload;
+        default:
+            return state;
+    }
+}
+
+
 //GENRES REDUCER
 // Used to store the movie genres
 const genres = (state = [], action) => {
@@ -70,6 +98,7 @@ const genres = (state = [], action) => {
 // Create one store that all components can use
 const storeInstance = createStore(
     combineReducers({
+        movieToPost,
         movies,
         genres,
     }),
