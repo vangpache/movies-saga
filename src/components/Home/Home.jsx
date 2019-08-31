@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import './Home.css'
 
 
 
@@ -25,7 +26,29 @@ class Home extends Component {
         return (
             <div>
                 <div>
-                    <h2>List of Movies Here</h2>
+                    <h2>Movie Collection</h2>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Movie Title</th>
+                                <th>Movie Poster</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {this.props.reduxStore.movies.map(movie => {
+                                return (
+                                  <tr>
+                                      <td>{movie.title}</td>
+                                      <td><img src={movie.poster} /></td>
+                                  </tr>
+                                )
+                            })}
+
+                        </tbody>
+                    </table>
+
+                    {/* {JSON.stringify(this.props.reduxStore.movies)} */}
                 </div>
 
                 <div>
@@ -38,8 +61,12 @@ class Home extends Component {
     }
 }
 
+const mapStateToProps = (reduxStore) => {
+    return {
+        reduxStore
+    }
+}
 
 
 
-
-export default connect() (Home);
+export default connect(mapStateToProps) (Home);
