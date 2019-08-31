@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Table, TableBody, TableCell, TableHead, TableRow } from '@material-ui/core';
+import { TableCell, TableRow } from '@material-ui/core';
 
 
 
@@ -14,17 +14,17 @@ class MoviesList extends Component {
 
         return (
 
-            <div>
+            <>
                 {this.props.reduxStore.movies.map(movie => {
                     return (
-                        <tr>
-                            <td>{movie.title}</td>
-                            <td><img src={movie.poster} /></td>
-                        </tr>
+                        <TableRow key={movie.id}>
+                            <TableCell>{movie.title}</TableCell>
+                            <TableCell><img src={movie.poster} alt={movie.title} /></TableCell>
+                        </TableRow>
                     )
                 })}
-
-            </div>
+            </>
+            
         )
     }
 }

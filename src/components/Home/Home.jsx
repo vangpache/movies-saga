@@ -29,8 +29,8 @@ class Home extends Component {
                     <Table>
                         <TableHead>
                             <TableRow>
-                                <th>Movie Title</th>
-                                <th>Movie Poster</th>
+                                <TableCell>Movie Title</TableCell>
+                                <TableCell>Movie Poster</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
