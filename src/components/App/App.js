@@ -8,8 +8,7 @@ import Details from '../Details/Details';
 import Edit from '../Edit/Edit';
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core';
 
-const theme = createMuiTheme(
-  {
+const theme = createMuiTheme({
     palette: {
       primary: {
         main: '#8bbabb',
@@ -18,8 +17,23 @@ const theme = createMuiTheme(
         main: '#464159',
       },
     },
-  }
-)
+  typography: {
+    fontFamily: [
+      '-apple-system',
+      'BlinkMacSystemFont',
+      '"Segoe UI"',
+      'Roboto',
+      '"Helvetica Neue"',
+      'Arial',
+      'sans-serif',
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"',
+    ].join(','),
+  },
+ 
+
+  })
 
 
 

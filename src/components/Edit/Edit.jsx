@@ -4,6 +4,7 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 
 
+
 class Edit extends Component {
 
     state = {
@@ -25,8 +26,12 @@ class Edit extends Component {
             type: 'UPDATE_MOVIE',
             payload: this.state
         })
+        this.props.dispatch({
+            type: 'GET_MOVIE_DETAILS',
+            payload: this.state.id
+        })
         console.log(this.state);
-        this.props.history.push('/')
+        this.props.history.push('/details')
     }
 
 
@@ -52,16 +57,6 @@ class Edit extends Component {
 
 
             <div>
-                
-
-                {/* {this.props.reduxStore.movieToGet.map(info => {
-                    return (
-                        <div key={info.id}>
-                            <h1>Edit {info.title}:</h1><br />
-                            <img src={info.poster} alt={info.title} /><br />
-                        </div>
-                    )
-                })} */}
 
                 <div key={this.props.reduxStore.movieToGet.id}>
                     <h1>Edit {this.props.reduxStore.movieToGet.title}:</h1><br />
@@ -77,12 +72,8 @@ class Edit extends Component {
                                 onChange={this.handleChangeDescription} /> <br />
                 </form>
                 
-                <Button variant="outlined" onClick={this.handleCancel}>Cancel</Button>
-                <Button variant="outlined" onClick={this.handleSave}>Save Changes</Button>
-
-                {/* {JSON.stringify(this.state)} */}
-                {JSON.stringify(this.props.reduxStore.movieToGet.id)}
-
+                <Button variant="contained" color="secondary" onClick={this.handleCancel}>Cancel</Button>
+                <Button variant="contained" color="secondary" onClick={this.handleSave}>Save Changes</Button>
             </div>
         )
     }

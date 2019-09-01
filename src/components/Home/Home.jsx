@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import MoviesList from '../MoviesList/MoviesList';
-import { Table, TableBody, TableCell, TableHead, TableRow } from '@material-ui/core';
+import { Table, TableBody, TableCell, TableHead, TableRow, Typography } from '@material-ui/core';
 import './Home.css'
 
 
@@ -24,9 +24,10 @@ class Home extends Component {
         return (
             <div>
                 <div>
-                    <h2>Movie Collection</h2>
+                    <Typography variant="h2" color="secondary" >Movie Collection</Typography>
+                 
 
-                    <Table>
+                    <Table >
                         <TableHead>
                             <TableRow>
                                 <TableCell>Movie Title</TableCell>

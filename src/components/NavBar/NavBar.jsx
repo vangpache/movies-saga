@@ -1,7 +1,7 @@
 import React from 'react';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-// import Typography from '@material-ui/core/Typography';
+import {AppBar, Typography, Paper} from '@material-ui/core';
+
+
 
 
 import './NavBar.css'
@@ -9,21 +9,24 @@ import './NavBar.css'
 
 const NavBar = () => {
     return (
-        <div className="container">
 
-        
-        <div className="headerDiv">
+
+        <Paper>
             <AppBar position="static">
-                <Toolbar>
-                    {/* <Typography variant="title"> */}
-                
-                            <h1>Saga Movies List</h1> 
+              
+                    <Typography variant="display4" align="center" gutterBottom  >
 
-                    {/* </Typography> */}
-                </Toolbar>
+                        Saga Movies List
+
+                    </Typography>
+              
             </AppBar>
-        </div>
-        </div>
+
+        </Paper>
+        
+            
+     
+      
     )
 }
 
